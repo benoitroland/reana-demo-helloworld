@@ -14,15 +14,11 @@ workflow:
     steps:
       - compute_backend: compute4punch
         environment: 'wlcg-wn:latest'
-        c4p_notification: Complete
+        c4p_notification: Always
+        c4p_cpu_cores: two
         commands:
           - python3 "${helloworld}" --inputfile "${inputfile}" --outputfile
             "${outputfile}" --sleeptime ${sleeptime}
 outputs:
   files:
     - results/greetings.txt
-tests:
-  files:
-    - tests/serial/log-messages.feature
-    - tests/serial/run-duration.feature
-    - tests/serial/workspace-files.feature
